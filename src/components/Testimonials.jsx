@@ -11,15 +11,16 @@ const Feature = ({ number, title, subtitle }) => (
   </div>
 );
 
-const Testimonial = ({ name, role, text, img, color }) => (
-  <div className="testimonial-wrapper">
-    <div className={`shape ${color}`} />
+const Testimonial = ({ name, role, text, img }) => (
+  <div className="testimonial-card">
+    <p className="review-text">{text}</p>
 
-    <div className="testi">
+    <div className="user">
       <img src={img} alt={name} className="avatar" />
-      <h4>{name}</h4>
-      <small className="muted">{role}</small>
-      <p>{text}</p>
+      <div>
+        <h4>{name}</h4>
+        <span className="muted">{role}</span>
+      </div>
     </div>
   </div>
 );
@@ -29,58 +30,53 @@ export default function TestimonialsSection() {
     <section className="testimonials">
       {/* ===== Features ===== */}
       <div className="features-grid2">
-        <Feature
-          number="1"
-          title="AI Matching Algorithm"
-          subtitle="Role‑Matched, Not Mass Applications"
-        />
-        <Feature
-          number="2"
-          title="Integrated Dashboard"
-          subtitle="All Data In One Place"
-        />
-        <Feature
-          number="3"
-          title="Structured Process"
-          subtitle="7‑Step Repeatable Workflow"
-        />
-        <Feature
-          number="4"
-          title="Real‑Time Analytics"
-          subtitle="Placement Outcomes Tracked"
-        />
+        <Feature number="1" title="AI Matching Algorithm" subtitle="Role-Matched, Not Mass Applications" />
+        <Feature number="2" title="Integrated Dashboard" subtitle="All Data In One Place" />
+        <Feature number="3" title="Structured Process" subtitle="7-Step Repeatable Workflow" />
+        <Feature number="4" title="Real-Time Analytics" subtitle="Placement Outcomes Tracked" />
       </div>
 
-      {/* ===== Testimonials ===== */}
-      <div className="testi-grid">
-        <Testimonial
-          name="Dr. Anil Kumar"
-          role="Training & Placement Officer"
-          text="TalentYug brought structure and transparency to our placement process.
-          From company coordination to offer tracking, everything is now centralized and efficient."
-          img="/images/anil.jpg"
-          color="green"
-        />
+      {/* ===== Heading ===== */}
+      <div className="review-heading">
+        <p className="sub">Read Reviews,</p>
+        <h2>ride with Confidence</h2>
+        <span className="rating">4.2/5 ⭐ Based on 2026 reviews.</span>
+      </div>
 
-        <Testimonial
-          name="Priya Sharma"
-          role="HR Manager"
-          text="Hiring from Tier 2/3 colleges used to be chaotic. 
-          TalentYug helped us shortlist better candidates, manage drives smoothly, and close offers faster."
-          img="/images/priya.jpg"
-          color="orange"
-        />
+      {/* ===== Testimonials Area ===== */}
+      <div className="reviews-row">
+        {/* LEFT QUOTE BLOCK */}
+        <div className="quote-block">
+          <div className="big-quote">❝</div>
+          <p className="quote-title">What our customers are saying</p>
+          <div className="quote-count">
+            <span className="active">01</span>
+            <span>/ 03</span>
+          </div>
+        </div>
 
-        <Testimonial
-          name="Rahul Verma"
-          role="Final Year Student (B.Tech)"
-          text="The mock interviews and clear application tracking boosted my confidence. 
-          I knew exactly where I stood in every hiring process."
-          img="/images/rahul.jpg"
-          color="blue"
-        />
+        {/* CARDS */}
+        <div className="testi-grid">
+          <Testimonial
+            name="Priya Sharma"
+            role="HR Manager"
+            text="Hiring from Tier 2/3 colleges used to be chaotic. TalentYug helped us shortlist better candidates, manage drives smoothly, and close offers faster."
+            img="/images/priya.jpg"
+          />
+          <Testimonial
+            name="Rahul Verma"
+            role="Final Year Student (B.Tech)"
+            text="The mock interviews and clear application tracking boosted my confidence. I knew exactly where I stood in every hiring process."
+            img="/images/rahul.jpg"
+          />
+          <Testimonial
+            name="Dr. Anil Kumar"
+            role="Training & Placement Officer"
+            text="TalentYug brought structure and transparency to our placement process. Everything is now centralized and efficient."
+            img="/images/anil.jpg"
+          />
+        </div>
       </div>
     </section>
   );
 }
-

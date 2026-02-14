@@ -42,6 +42,7 @@
   position: relative;
   z-index: 1;
   overflow: hidden;
+  transform-origin: center bottom;
 }
 
 .hero-left h1{
@@ -55,13 +56,15 @@
   margin-bottom: 40px;
 }
 
-/* smooth fade */
+/* hero image base */
 .hero-card img {
   width: 410px;
   height: 460px;
   object-fit: cover;
   border-radius: 28px 28px 28px 0;
   display: block;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* dots container */
@@ -83,7 +86,8 @@
   background: white;  /* soft white */
   border-radius: 50%;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: width 0.5s cubic-bezier(0.33, 0, 0.2, 1),
+              background 0.35s ease;
 }
 
 /* hover effect */
