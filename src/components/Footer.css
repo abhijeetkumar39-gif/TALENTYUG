@@ -2,7 +2,7 @@
 
 .footer {
   color: white;
-  font-size: 14px;
+  font-size: 16px;
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
@@ -26,6 +26,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  padding-bottom: 32px;
 }
 
 /* GRID */
@@ -39,7 +40,7 @@
 /* HEADINGS */
 .footer h4{
   margin-bottom: 12px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -53,6 +54,7 @@
 .footer li{
   margin-bottom: 8px;
   opacity: 0.95;
+  font-size: 16px;
 }
 
 /* BRAND */
@@ -75,8 +77,9 @@
 /* COPYRIGHT */
 .footer-copy{
   text-align: center;
-  margin-top: 32px;
-  font-size: 13px;
+  margin-top: 16px;
+  font-size: 18px;
+  font-weight: 500;
   opacity: 0.9;
 }
 
@@ -112,14 +115,14 @@
   }
 
   .footer h4 {
-    font-size: 15px;
+    font-size: 17px;
     margin-bottom: 10px;
   }
 
   .footer-copy {
-    margin-top: 28px;
+    margin-top: 22px;
     padding: 0 20px;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.6;
   }
 }
@@ -192,13 +195,13 @@
 
   .footer li,
   .footer p {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .footer-copy {
-    margin-top: 20px;
+    margin-top: 16px;
     padding: 0 16px;
-    font-size: 11px;
+    font-size: 13px;
     line-height: 1.7;
   }
 }
