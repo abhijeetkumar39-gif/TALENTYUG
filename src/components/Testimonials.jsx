@@ -50,8 +50,12 @@ export default function TestimonialsSection() {
           <div className="big-quote">❝</div>
           <p className="quote-title">What our customers are saying</p>
           <div className="quote-count">
-            <span className="active">01</span>
-            <span>/ 03</span>
+            <span className="quote-arrow" aria-hidden="true">&lt;</span>
+            <span className="quote-nums">
+              <span className="active">01</span>
+              <span className="total">/ 03</span>
+            </span>
+            <span className="quote-arrow" aria-hidden="true">&gt;</span>
           </div>
         </div>
 
@@ -72,7 +76,7 @@ export default function TestimonialsSection() {
           <Testimonial
             name="Dr. Anil Kumar"
             role="Training & Placement Officer"
-            text="TalentYug brought structure and transparency to our placement process. Everything is now centralized and efficient."
+            text="TalentYug brought structure and transparency to our placement process. From company coordinator to offer tracking, everything is now centralized and efficient."
             img="/images/anil.jpg"
           />
         </div>
