@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import mask from "../public/Mask.png";
-import d1 from "../public/d1.png";
-import d2 from "../public/d2.png";
-import d3 from "../public/d3.png";
-import d4 from "../public/d4.png";
 import "./Hero.css";
 
 export default function Hero() {
-  const images = [mask, d1, d2, d3, d4];
+  const images = [
+    new URL("../public/Mask.png", import.meta.url).href,
+    new URL("../public/d1.png", import.meta.url).href,
+    new URL("../public/d2.png", import.meta.url).href,
+    new URL("../public/d3.png", import.meta.url).href,
+    new URL("../public/d4.png", import.meta.url).href,
+  ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // auto slide – longer interval for a calmer feel

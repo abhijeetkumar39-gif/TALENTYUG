@@ -1,28 +1,36 @@
 :root {
   --primary: #2180A8;
   --muted: #6b7b86;
-  --bg: #f6fbfd;
+  --bg: #ffffff;
   --card: #ffffff;
 }
 
 * {
-  box-sizing: border-box
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
 }
 
 body {
   font-family: Inter, Segoe UI, Arial, sans-serif;
-  margin: 0;
-  background: var(--bg);
+  background-color: #ffffff;
   color: #08303b;
-   /* max-width: 100%; */
+}
+
+.app-root {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 24px 0 24px 24px;
+  padding: 24px;
 }
-
 
 .nav a {
   margin: 0 10px;

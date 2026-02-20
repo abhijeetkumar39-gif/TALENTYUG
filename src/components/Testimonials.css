@@ -105,9 +105,10 @@
 }
 
 .big-quote {
-  font-size: 150px;
-  color: #2180A8;
+  font-size: 190px;
+  color: #7eb8d4;
   line-height: 1;
+  font-weight: 300;
 }
 
 .quote-title {
@@ -117,13 +118,37 @@
 }
 
 .quote-count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-weight: 600;
   color: #555;
 }
 
+.quote-arrow {
+  font-size: 18px;
+  color: #555;
+  line-height: 1;
+  user-select: none;
+}
+
+.quote-nums {
+  display: inline-flex;
+  align-items: baseline;
+}
+
 .quote-count .active {
-  font-size: 20px;
+  font-size: 32px;
+  font-weight: 700;
   color: #000;
+  line-height: 1;
+}
+
+.quote-count .total {
+  font-size: 18px;
+  font-weight: 600;
+  color: #555;
+  margin-left: 2px;
 }
 
 /* ===== Testimonials Grid ===== */
@@ -140,8 +165,8 @@
 .testimonial-card {
   background: #ffffff;
   padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 25px 25px 25px 0px;
+  box-shadow:10px 10px 10px 10px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
