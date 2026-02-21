@@ -40,7 +40,7 @@
 /* HEADINGS */
 .footer h4{
   margin-bottom: 12px;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 600;
 }
 
@@ -54,7 +54,8 @@
 .footer li{
   margin-bottom: 8px;
   opacity: 0.95;
-  font-size: 16px;
+  font-size: 18px;
+
 }
 
 /* BRAND */
@@ -66,7 +67,7 @@
 }
 
 .footer-brand img{
-  height: 48px;
+  height: 12vh;
 }
 
 .footer-brand span{
