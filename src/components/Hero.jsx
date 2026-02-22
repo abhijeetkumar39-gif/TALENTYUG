@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import "./Hero.css";
 
 export default function Hero() {
@@ -10,16 +10,67 @@ export default function Hero() {
     new URL("../public/d3.png", import.meta.url).href,
     new URL("../public/d4.png", import.meta.url).href,
   ];
-  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // auto slide – longer interval for a calmer feel
+  // 🔥 Clone for seamless loop
+  const extendedImages = [
+    images[images.length - 1],
+    ...images,
+    images[0],
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const sliderRef = useRef(null);
+
+  const realLength = images.length;
+
+  // ✅ Auto slide with pause on hover
   useEffect(() => {
+    if (isPaused) return;
+
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
+      nextSlide();
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [images.length]); // small fix for React warning
+  }, [isPaused]);
+
+  const nextSlide = () => {
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
+  };
+
+  const prevSlide = () => {
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev - 1);
+  };
+
+  // 🧠 Seamless infinite logic (MOST IMPORTANT FIX)
+  useEffect(() => {
+    if (currentIndex === extendedImages.length - 1) {
+      // when reaching cloned first image
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(1);
+      }, 600);
+    }
+
+    if (currentIndex === 0) {
+      // when reaching cloned last image
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(extendedImages.length - 2);
+      }, 600);
+    }
+  }, [currentIndex, extendedImages.length]);
+
+  // 🎯 Real index for dots
+  const getRealIndex = () => {
+    if (currentIndex === 0) return realLength - 1;
+    if (currentIndex === extendedImages.length - 1) return 0;
+    return currentIndex - 1;
+  };
 
   return (
     <section className="hero">
@@ -28,7 +79,7 @@ export default function Hero() {
           <h1>India's Placement Infrastructure For Tier 2/3 Colleges</h1>
 
           <p className="lead">
-            70% Placements | 5.5L Average Salary | <br />
+            70% Placements | 5.5L Average Salary <br />
             7-Step Structured Process
           </p>
 
@@ -39,64 +90,83 @@ export default function Hero() {
           <hr className="stats-divider" />
 
           <ul className="stats">
-            <li><strong>1M+</strong> Students <br />Annual Unemployed</li>
-            <li><strong>70%</strong> <br /> Success Rate</li>
-            <li><strong>500Cr</strong> <br /> Markets</li>
+            <li>
+              <strong>1M+</strong> Students <br />Annual Unemployed
+            </li>
+            <li>
+              <strong>70%</strong> <br /> Success Rate
+            </li>
+            <li>
+              <strong>500Cr</strong> <br /> Markets
+            </li>
           </ul>
         </div>
 
-        {/* Right image slider */}
+        {/* ✅ RIGHT SLIDER */}
         <motion.div
           className="hero-right"
           initial={{ opacity: 0, x: 24, y: 12 }}
           animate={{ opacity: 1, x: 0, y: 0 }}
-          transition={{
-            duration: 1.4,
-            ease: [0.22, 0.61, 0.36, 1],
-          }}
+          transition={{ duration: 1.2 }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
           <motion.div
             className="hero-card"
             animate={{
               y: [0, -10, 0],
-              scale: [1, 1.012, 1],
-              boxShadow: [
-                "0 24px 48px rgba(11, 119, 134, 0.1)",
-                "0 26px 50px rgba(11, 119, 134, 0.16)",
-                "0 24px 48px rgba(11, 119, 134, 0.1)",
-              ],
+              scale: [1, 1.01, 1],
             }}
             transition={{
-              duration: 7,
+              duration: 6,
               repeat: Infinity,
-              ease: [0.37, 0, 0.63, 1],
-              times: [0, 0.5, 1],
+              ease: "easeInOut",
             }}
           >
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={currentIndex}
-                src={images[currentIndex]}
-                alt="campus"
-                className="hero-img"
-                initial={{ opacity: 0, scale: 1.02 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.995 }}
-                transition={{
-                  duration: 0.85,
-                  ease: [0.33, 0, 0.2, 1],
-                }}
-              />
-            </AnimatePresence>
+            {/* 🔥 FIX: Proper track width + correct translate */}
+            <motion.div
+              ref={sliderRef}
+              className="slider-track"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              onDragEnd={(e, info) => {
+                if (info.offset.x < -80) nextSlide();
+                if (info.offset.x > 80) prevSlide();
+              }}
+              animate={{
+                x: `-${currentIndex * 100}%`,
+              }}
+              transition={
+                isTransitioning
+                  ? { duration: 0.6, ease: "easeInOut" }
+                  : { duration: 0 }
+              }
+            >
+              {extendedImages.map((img, index) => (
+                <div className="slide" key={index}>
+                  <img
+                    src={img}
+                    alt="campus"
+                    className="hero-img"
+                    draggable="false"
+                  />
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
 
-          {/* ✅ Dots indicator */}
+          {/* 🎯 DOTS */}
           <div className="dots">
             {images.map((_, index) => (
               <span
                 key={index}
-                className={`dot ${currentIndex === index ? "active" : ""}`}
-                onClick={() => setCurrentIndex(index)}
+                className={`dot ${
+                  getRealIndex() === index ? "active" : ""
+                }`}
+                onClick={() => {
+                  setIsTransitioning(true);
+                  setCurrentIndex(index + 1);
+                }}
               />
             ))}
           </div>

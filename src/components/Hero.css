@@ -12,6 +12,7 @@
 .hero-right {
   position: relative;
   display: flex;
+  flex-direction: column;   /* ⭐ THIS pushes dots below image */
   justify-content: center;
   align-items: center;
 }
@@ -20,8 +21,8 @@
   content: "";
   position: absolute;
 
-  width: 420px;
-  height: 420px;
+  width: 560px;
+  height: 560px;
 
   background: radial-gradient(
     circle at center,
@@ -40,9 +41,23 @@
 
 .hero-card {
   position: relative;
-  z-index: 1;
   overflow: hidden;
-  transform-origin: center bottom;
+  border-radius: 24px;
+  width: 100%;
+  height: 520px;
+  z-index: 1; /* keeps card above glow */
+}
+
+.slider-track {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+.slide {
+  width: 100%;        /* 🔥 change from min-width to width */
+  flex: 0 0 100%;     /* 🔥 HARD FIX for image bleeding */
+  height: 100%;
+  overflow: hidden;   /* extra safety */
 }
 
 .hero-left h1{
@@ -56,51 +71,52 @@
   margin-bottom: 40px;
 }
 
-/* hero image base */
-.hero-card img {
-  width: 410px;
-  height: 460px;
+.hero-img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 28px 28px 28px 0;
-  display: block;
-  will-change: transform;
-  backface-visibility: hidden;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 /* dots container */
 .dots {
-  position: absolute;
-  bottom: 16px;              /* place over image bottom */
-  left: 50%;
-  transform: translateX(-50%);
-
+  width: 100%;              /* prevents right alignment issue */
   display: flex;
-  gap: 6px;
-  z-index: 2;              /* above image and glow */
+  justify-content: center;  /* center horizontally */
+  align-items: center;
+  gap: 6px;                 /* smaller spacing */
+  margin-top: 14px;
+  z-index: 2;               /* above glow effect */
 }
 
 /* normal dot */
 .dot {
-  width: 6px;
+  width: 6px;               /* 🔥 reduced from 10px */
   height: 6px;
-  background: white;  /* soft white */
   border-radius: 50%;
+  background: #cfd8dc;
   cursor: pointer;
-  transition: width 0.5s cubic-bezier(0.33, 0, 0.2, 1),
-              background 0.35s ease;
+  transition: all 0.25s ease;
+  opacity: 0.7;
 }
+
+
 
 /* hover effect */
 .dot:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: #0b7786;
+  opacity: 1;
 }
 
 /* active dot */
 .dot.active {
-  width: 18px;              /* pill shape like modern sliders */
+  width: 18px;              /* elongated active indicator */
   height: 6px;
-  border-radius: 10px;
-  background: white;
+  border-radius: 20px;
+  background: #0b7786;
+  transform: none;          /* remove scale for smoother look */
+  opacity: 1;
 }
 
 
