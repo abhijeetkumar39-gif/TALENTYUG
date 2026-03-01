@@ -1,8 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import logo from "../public/logo.png";
-import footerImg from "../public/fgfdg.png";
-import rectangleImg from "../public/rectangle.png";
+import Images from "../assets";
 
 export default function Footer(){
   return (
@@ -11,13 +9,13 @@ export default function Footer(){
       {/* TOP IMAGE (150px) */}
       <div
         className="footer-top"
-        style={{ backgroundImage: `url(${footerImg})` }}
+        style={{ backgroundImage: `url(${Images.fgfdg})` }}
       />
 
       {/* BOTTOM IMAGE + CONTENT */}
       <div
         className="footer-bottom"
-        style={{ backgroundImage: `url(${rectangleImg})` }}
+        style={{ backgroundImage: `url(${Images.rectangle})` }}
       >
         <div className="container footer-grid">
 
@@ -49,7 +47,7 @@ export default function Footer(){
           </div>
 
           <div className="footer-brand">
-            <img src={logo} alt="TalentYug" />
+            <img src={Images.logo} alt="TalentYug" />
             {/* <span>TalentYug</span> */}
           </div>
 

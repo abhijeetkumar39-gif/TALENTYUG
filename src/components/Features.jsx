@@ -1,9 +1,6 @@
 import React from "react";
 import "./Features.css";
-
-import collegeIcon from "../public/Folder.svg";
-import companyIcon from "../public/Stat.png";
-import studentIcon from "../public/User.png";
+import Images from "../assets";
 
 function Card({ icon, title, points, button }) {
   return (
@@ -30,7 +27,7 @@ export default function Features() {
 
       <div className="features-grid">
         <Card
-          icon={collegeIcon}
+          icon={Images.folder}
           title="AI-Powered Campus Hiring, Simplified."
           points={[
             "Upload Company Requirements",
@@ -42,7 +39,7 @@ export default function Features() {
         />
 
         <Card
-          icon={companyIcon}
+          icon={Images.stat}
           title="Hire Smarter, Faster From Campuses."
           points={[
             "Post Job Requirements In Template",
@@ -54,7 +51,7 @@ export default function Features() {
         />
 
         <Card
-          icon={studentIcon}
+          icon={Images.user}
           title="Prepare, Apply, Get Hired."
           points={[
             "Discover Relevant Opportunities",

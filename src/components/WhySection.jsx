@@ -1,12 +1,7 @@
 import React from 'react'
 import "./WhySection.css";
-import whyImg from '../public/why-infographic.png'
-import collegeIcon from '../public/College_icon.png'
-import companyIcon from '../public/Company_icon.png'
-import studentIcon from '../public/Student_icon.png'
-import college from '../public/college.png'
-import company from '../public/company.png'
-import student from '../public/student.png'
+import Images from "../assets";
+
 
 
 export default function WhySection(){
@@ -21,10 +16,10 @@ export default function WhySection(){
   {/* Colleges */}
   <div
     className="why-card bg-card"
-    style={{ backgroundImage: `url(${college})` }}
+    style={{ backgroundImage: `url(${Images.college})` }}
   >
     <div className="card-heading">
-      <img src={collegeIcon} alt="Colleges" className="why-icon" />
+      <img src={Images.college_icon} alt="Colleges" className="why-icon" />
       <h3>Colleges</h3>
     </div>
     <ul>
@@ -37,10 +32,10 @@ export default function WhySection(){
   {/* Companies */}
   <div
     className="why-card bg-card"
-    style={{ backgroundImage: `url(${company})` }}
+    style={{ backgroundImage: `url(${Images.company})` }}
   >
     <div className="card-heading">
-      <img src={companyIcon} alt="Companies" className="why-icon" />
+      <img src={Images.company_icon} alt="Companies" className="why-icon" />
       <h3>Companies</h3>
     </div>
     <ul>
@@ -53,10 +48,10 @@ export default function WhySection(){
   {/* Students */}
   <div
     className="why-card bg-card"
-    style={{ backgroundImage: `url(${student})` }}
+    style={{ backgroundImage: `url(${Images.student})` }}
   >
     <div className="card-heading">
-      <img src={studentIcon} alt="Students" className="why-icon" />
+      <img src={Images.student_icon} alt="Students" className="why-icon" />
       <h3>Students</h3>
     </div>
     <ul>
@@ -84,7 +79,7 @@ export default function WhySection(){
           </div>
 
           <div className="why-feature-media">
-            <img src={whyImg} alt="TalentYug diagram" />
+            <img src={Images.why_infographic} alt="TalentYug diagram" />
           </div>
         </div>
       </div>

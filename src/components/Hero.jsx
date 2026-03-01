@@ -1,15 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import "./Hero.css";
+import Images from "../assets";
 
 export default function Hero() {
-  const images = [
-    new URL("../public/Mask.png", import.meta.url).href,
-    new URL("../public/d1.png", import.meta.url).href,
-    new URL("../public/d2.png", import.meta.url).href,
-    new URL("../public/d3.png", import.meta.url).href,
-    new URL("../public/d4.png", import.meta.url).href,
-  ];
+     const images = [
+        Images.mask,
+        Images.d1,
+        Images.d2,
+        Images.d3,
+        Images.d4,
+    ];
+  // const images = [
+  //   new URL("../public/Mask.png", import.meta.url).href,
+  //   new URL("../public/d1.png", import.meta.url).href,
+  //   new URL("../public/d2.png", import.meta.url).href,
+  //   new URL("../public/d3.png", import.meta.url).href,
+  //   new URL("../public/d4.png", import.meta.url).href,
+  // ];
 
   // 🔥 Clone for seamless loop
   const extendedImages = [

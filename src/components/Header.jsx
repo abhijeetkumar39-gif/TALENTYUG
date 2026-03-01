@@ -2,7 +2,9 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import styles from "./Header.module.css";
-import logo from "../public/logo.png";
+import Images from "../assets";
+
+
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -37,7 +39,7 @@ const Header = () => {
         
         {/* Logo LEFT */}
         <div className={styles.logo}>
-          <img src={logo} alt="TalentYug Logo" className={styles.logoImg} />
+          <img src={Images.logo} alt="TalentYug Logo" className={styles.logoImg} />
         </div>
 
         {/* Hamburger - visible on small screens */}
